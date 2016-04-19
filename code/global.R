@@ -1,3 +1,21 @@
+#------------------------------------------------------------------------------#
+### Set up workspace -----------------------------------------------------------
+#------------------------------------------------------------------------------#
+
+library(shiny)
+library(leaflet)
+library(rgdal)
+library(httr)
+library(ggmap)
+library(tools)
+library(lubridate)
+simpleCap <- function(x) {
+  s <- strsplit(x, " ")[[1]]
+  paste(toupper(substring(s, 1, 1)), tolower(substring(s, 2)),
+        sep = "", collapse = " ")
+}
+p0 <- function(...) paste0(...)
+grepv <- function(p, x) grep(pattern = p, x = x, value = TRUE)
 setwd("~/GitHub/school-day-crime/")
 
 #------------------------------------------------------------------------------#
@@ -35,5 +53,8 @@ c2 <- within(crime, {
   type_viol <- grepl("ASSAULT|BATTERY|HOMICIDE", Primary.Type)
   type_drug <- grepl("NARCOTICS", Primary.Type)
   type_all <- TRUE
+  
+  popUpTxt <- p0("<b>Primary Type: </b>", Primary.Type, "<br/>",
+                 "<b>Description: </b>", Description)
 }) %>%
   subset(!is.na(Latitude) & !is.na(Longitude))
