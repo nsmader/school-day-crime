@@ -1,0 +1,5 @@
+*.zip
+*token.txt
+*key.txt
+*.Rhistory
+.Rproj.user

@@ -1,0 +1,1 @@
+School locations downloaded from the City of Chicago data portal at -- https://data.cityofchicago.org/Education/CPS-School-Locations-SY1516/2mts-wp7t
